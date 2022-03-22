@@ -1,23 +1,16 @@
 from preprocessing import data_load, vectorizer
-from sklearn.metrics import f1_score, accuracy_score
 from sklearn.naive_bayes import MultinomialNB
 import random
 from sklearn.pipeline import make_pipeline
-from sklearn.pipeline import Pipeline
 from lime.lime_text import LimeTextExplainer
-from models import CNN
-import numpy as np
-from tensorflow.keras.utils import to_categorical
 import tensorflow as tf
 import time
-from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.metrics import classification_report
 import pandas as pd
 
 tf.config.experimental_run_functions_eagerly(True)
 gpu = tf.config.experimental.list_physical_devices('GPU')
 
-import matplotlib.pyplot as plt
 
 #model
 nb = MultinomialNB(alpha=0.01)
