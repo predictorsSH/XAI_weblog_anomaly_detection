@@ -1,4 +1,3 @@
-import sklearn
 from sklearn.feature_extraction import text
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -9,8 +8,8 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 class Tfidf_array():
 
-    def __init__(self):
-        self.tovec=text.TfidfVectorizer(lowercase=False)
+    def __init__(self, max_features=None):
+        self.tovec=text.TfidfVectorizer(lowercase=False, max_features=max_features)
 
 
     def fit(self,train):

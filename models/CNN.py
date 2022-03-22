@@ -1,17 +1,18 @@
 from tensorflow.keras.layers import Dense, Conv1D, MaxPool1D, Flatten, Reshape
-from tensorflow.keras import Model, Sequential
+from tensorflow.keras import Sequential
 
 
 class CNN():
 
-    def __init__(self):
-        self.input_shape = 121
-
+    def __init__(self, feature_size, batch_size=10, epochs=1):
+        self.input_shape = feature_size
+        self.batch_size = batch_size
+        self.epochs = epochs
 
     def build_model(self):
 
         model = Sequential()
-        model.add(Reshape((121,1), input_shape=(self.input_shape,1)))
+        model.add(Reshape((self.input_shape,1), input_shape=(self.input_shape,1)))
         model.add(Conv1D(32,4))
         # model.add(Conv1D(32,4, input_shape=(self.input_shape,1)))
         model.add(MaxPool1D(2))
@@ -29,7 +30,7 @@ class CNN():
         return model
 
     def learn(self, model, train, target):
-        model.fit(train, target, batch_size=100 ,epochs=1,validation_split=0.2)
+        model.fit(train, target, batch_size=self.batch_size ,epochs=self.epochs,validation_split=0.2)
 
 
 
